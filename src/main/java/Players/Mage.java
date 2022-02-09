@@ -3,15 +3,14 @@ package Players;
 import Enemies.Enemy;
 import Players.Spells.Spells;
 import Summons.Summon;
-import Weapons.Weapon;
 
 public abstract class Mage extends Player implements ISpell {
 
     private Summon summon;
     private int manaPoints;
 
-    public Mage(String name, int healthPoints, Weapon weapon, int strength, int intelligence, int agility, Summon summon, int manaPoints) {
-        super(name, healthPoints, weapon, strength, intelligence, agility);
+    public Mage(String name, int healthPoints, int strength, int intelligence, int agility, Summon summon, int manaPoints) {
+        super(name, healthPoints, strength, intelligence, agility);
         this.summon = summon;
         this.manaPoints = manaPoints;
     }

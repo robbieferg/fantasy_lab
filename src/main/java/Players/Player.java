@@ -6,15 +6,13 @@ import Weapons.Weapon;
 public abstract class Player implements ITakeDamage {
     private String name;
     private int healthPoints;
-    private Weapon weapon;
     private int strength;
     private int intelligence;
     private int agility;
 
-    public Player(String name, int healthPoints, Weapon weapon, int strength, int intelligence, int agility) {
+    public Player(String name, int healthPoints, int strength, int intelligence, int agility) {
         this.name = name;
         this.healthPoints = healthPoints;
-        this.weapon = weapon;
         this.strength = strength;
         this.intelligence = intelligence;
         this.agility = agility;
