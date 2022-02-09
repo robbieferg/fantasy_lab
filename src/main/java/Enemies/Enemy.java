@@ -1,9 +1,11 @@
 package Enemies;
 
+import Players.Player;
+import Weapons.ITakeDamage;
 import Weapons.IWeapon;
 import Weapons.Weapon;
 
-public abstract class Enemy implements IWeapon {
+public abstract class Enemy implements ITakeDamage {
     private int healthPoints;
     private Weapon weapon;
 
@@ -28,8 +30,8 @@ public abstract class Enemy implements IWeapon {
         this.weapon = weapon;
     }
 
-    public void attack() {
-
+    public void attack(Player player) {
+        player.takeDamage(this.getWeapon().getDamage());
     }
 
     public void takeDamage(int damage) {

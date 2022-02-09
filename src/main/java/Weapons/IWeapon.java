@@ -1,5 +1,8 @@
 package Weapons;
 
+import Players.Player;
+
 public interface IWeapon {
-    void attack();
+    void attack(ITakeDamage takeDamage);
+
 }

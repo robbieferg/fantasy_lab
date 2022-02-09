@@ -1,15 +1,11 @@
 package Weapons;
 
-public abstract class Weapon implements IWeapon {
+public abstract class Weapon {
     private int damage;
 
     public Weapon(int damage) {
         this.damage = damage;
     }
-
-    public void attack() {
-
-    };
 
     public int getDamage() {
         return damage;

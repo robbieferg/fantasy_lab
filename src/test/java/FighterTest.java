@@ -1,4 +1,5 @@
 import Enemies.Orc;
+import HealingItems.EstusFlask;
 import Players.Barbarian;
 import Players.Dwarf;
 import Players.Knight;
@@ -19,6 +20,7 @@ public class FighterTest {
     private Dwarf dwarf;
     private Barbarian barbarian;
     private Orc orc;
+    private EstusFlask flask;
 
     @Before
     public void before() {
@@ -30,6 +32,8 @@ public class FighterTest {
         dwarf = new Dwarf("Gimli", 65, axe, 8, 6, 4);
         barbarian = new Barbarian("Fred", 70, club, 7, 7, 7);
         orc = new Orc(55, sword2);
+        flask = new EstusFlask(15);
+
 
     }
 
@@ -37,7 +41,17 @@ public class FighterTest {
     public void canAttack() {
         knight.attack(orc);
         assertEquals(0, orc.getHealthPoints());
-
     }
+
+    @Test
+    public void canUseHealingItem(){
+        orc.attack(knight);
+        knight.useHeal(flask);
+        assertEquals(55, knight.getHealthPoints());
+    }
+
+
+
+
 
 }
