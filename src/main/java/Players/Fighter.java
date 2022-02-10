@@ -6,6 +6,9 @@ import HealingItems.EstusFlask;
 import HealingItems.HealingItem;
 import Weapons.Weapon;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public abstract class Fighter extends Player {
     private Weapon weapon;
 
@@ -23,7 +26,12 @@ public abstract class Fighter extends Player {
     }
 
     public void attack(Enemy enemy) {
-        enemy.takeDamage(this.getWeapon().getDamage());
+        ArrayList<Integer> attributes = new ArrayList<Integer>();
+        attributes.add(this.getStrength());
+        attributes.add(this.getIntelligence());
+        attributes.add(this.getAgility());
+        int max = Collections.max(attributes);
+        enemy.takeDamage(this.getWeapon().getDamage() + max);
     }
 
     public void useHeal(HealingItem healingItem) {

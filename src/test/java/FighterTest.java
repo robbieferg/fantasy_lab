@@ -1,4 +1,5 @@
 import Enemies.Orc;
+import Enemies.Troll;
 import HealingItems.EstusFlask;
 import Players.Barbarian;
 import Players.Cleric;
@@ -23,6 +24,7 @@ public class FighterTest {
     private Orc orc;
     private EstusFlask flask;
     private Cleric cleric;
+    private Troll troll;
 
     @Before
     public void before() {
@@ -36,14 +38,25 @@ public class FighterTest {
         orc = new Orc(55, sword2);
         flask = new EstusFlask(15);
         cleric = new Cleric("Radagast", 60, 4, 8, 6, 20);
+        troll = new Troll(75, axe);
 
 
     }
 
     @Test
-    public void canAttack() {
+    public void canAttackAndWoundWithMultiplier() {
+        knight.attack(troll);
+        assertEquals(11, troll.getHealthPoints());
+        assertEquals(true, troll.getIsAlive());
+        assertEquals(true, knight.getIsAlive());
+
+    }
+
+    @Test
+    public void canAttackAndKill() {
         knight.attack(orc);
         assertEquals(0, orc.getHealthPoints());
+        assertEquals(false, orc.getIsAlive());
     }
 
     @Test
@@ -59,6 +72,11 @@ public class FighterTest {
         cleric.heal(knight);
         assertEquals(60, knight.getHealthPoints());
     }
+
+//    @Test
+//    public void canLevelUp() {
+//        knight.levelUp();
+//    }
 
 
 

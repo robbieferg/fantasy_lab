@@ -8,10 +8,12 @@ import Weapons.Weapon;
 public abstract class Enemy implements ITakeDamage {
     private int healthPoints;
     private Weapon weapon;
+    private boolean isAlive;
 
     public Enemy(int healthPoints, Weapon weapon) {
         this.healthPoints = healthPoints;
         this.weapon = weapon;
+        this.isAlive = true;
     }
 
     public int getHealthPoints() {
@@ -30,12 +32,29 @@ public abstract class Enemy implements ITakeDamage {
         this.weapon = weapon;
     }
 
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+
+
+    public void setIsAlive(boolean alive) {
+        isAlive = alive;
+    }
+
     public void attack(Player player) {
         player.takeDamage(this.getWeapon().getDamage());
     }
 
     public void takeDamage(int damage) {
-        this.setHealthPoints(healthPoints -= damage);
+        if (healthPoints - damage <= 0) {
+            this.setHealthPoints(0);
+            this.setIsAlive(false);
+        }
+        else {
+            this.setHealthPoints(healthPoints -= damage);
+        }
+
     }
 
 
